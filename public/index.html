@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="output.css">
+</head>
+<body>
+
+    <!-- NAVBAR SECTION -->
+    <section class="flex justify-center bg-[#F6F6F6] sticky top-0 z-10 ">
+        <section id="header" class="container mx-auto flex justify-between text-2xl sm:text-3xl py-4 px-3">
+            <a href=""><img src="./image/logo.png" alt="Logo" class="h-6 sm:h-10"></a>
+            <nav>
+                <ul class=" hidden gap-x-8 lg:flex">
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Home</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Shop</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Products</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Page</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Docs</a></li>
+                </ul>
+            </nav>
+            <div id="icons" class="flex gap-x-2 sm:gap-x-4 items-center relative">
+                <section class="relative">
+                    <input type="search" name="" id="" placeholder="search" class="w-60 px-4 py-1 rounded-md absolute -top-4 right-0 hidden font-light text-base outline-none">
+                </section>
+                <i class='bx bx-search hover:text-[#EE1C47] duration-300 hover:cursor-pointer'></i>
+                <a href=""><i class='bx bx-user hover:text-[#EE1C47] duration-300'></i></a>
+                <a href=""><i class='bx bx-cart hover:text-[#EE1C47] duration-300'></i></a>
+                <i id="hamburger" class='bx bx-menu lg:hidden hover:text-[#EE1C47] duration-300 hover:cursor-pointer'></i>
+                <ul id="mobilenav" class="absolute top-12 -left-4 bg-white px-10 py-4 rounded-md text-center hidden duration-1000">
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Home</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Shop</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Products</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Page</a></li>
+                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Docs</a></li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+
+    <!-- HOME SECTION -->
+    <section id="homeWrapper" class=" relative">
+        <section id="home" class="container mx-auto pl-2">
+            <div class="sm:w-1/2 flex flex-col justify-center gap-y-1 py-32 sm:h-screen sm:justify-center sm:my-0">
+                <h3 class="text-base sm:text-lg text-[#EE1C47] font-semibold">Winter Collection</h3>
+                <h2 class="text-4xl font-bold sm:text-7xl">New Winter <br>Collection 2023</h2>
+                <p class="text-lg"><i>There's nothing like trend</i></p>
+                <a href="" class="px-4 py-2 border-2 w-fit border-black text-lg sm:text-xl hover:bg-gray-950 hover:text-white duration-500">Shop Now <i class='bx bx-right-arrow-alt ml-1'></i></a>
+            </div>
+        </section>
+    </section>
+
+
+
+    <!-- OUR TRENDING PRODUCTS -->
+    <section class="container mx-auto my-10 sm:my-16 px-2">
+        <h2 class="text-center text-xl font-bold sm:text-4xl"> Our Trending <span class="text-[#EE1C47]">Products</span></h2>
+        <div id="products" class="mt-10 flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center gap-6 2xl:gap-8">
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Sale</p>
+                <img src="./image/1.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Half Running Set</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+
+                <img src="./image/2.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Formal Men Lowers</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Hot</p>
+                <img src="./image/3.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Half Running Suit</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">New</p>
+                <img src="./image/4.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Half Fancy Lady Dredd</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+
+                <img src="./image/5.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Flix Flox jeans</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">New</p>
+                <img src="./image/6.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Fancy Salwar Suits</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Sale</p>
+                <img src="./image/7.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Printed Straigth Kurta</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
+                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Sale</p>
+                <img src="./image/8.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
+                <div class="flex justify-between px-1 text-lg sm:text-xl">
+                    <div id="starts" class="flex gap-x-1 text-orange-600">
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star' ></i>
+                        <i class='bx bxs-star-half' ></i>
+                    </div>
+                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
+                </div>
+                <h3 class="text-lg sm:text-xl">Collot Full Dress</h3>
+                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CLIENT REVIEW -->
+    <section id="clientreview" class="w-full bg-[#F6F6F6] flex justify-center p-14">
+        <div class="w-full sm:w-3/4 flex flex-col items-center text-center gap-3">
+            <h2 class="text-2xl font-bold sm:text-3xl">Client Review</h2>
+            <img src="./image/team-1.jpg" alt="" class="rounded-full h-40">
+            <p class="sm:text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ea praesentium nostrum esse dicta necessitatibus vero quam maxime, ipsum cum tempore modi! Deleniti corrupti quis id debitis dicta iure dolore.</p>
+            <h2 class="text-xl font-semibold sm:text-2xl">Mark Jevenue</h2>
+            <h3 class="sm:text-lg text-gray-500">CEO of Addle</h3>
+        </div>
+    </section>
+
+
+    <!-- NEW UPDATES -->
+    <section id="newupdates" class="container mx-auto flex flex-col items-center my-10 sm:my-16 px-4">
+        <h2 class="text-2xl sm:text-3xl font-bold">New Updates</h2>
+        <div class="flex flex-wrap gap-x-2 gap-y-10 my-10 justify-center">
+            <div class="w-96 px-16 sm:px-4">
+                <img src="./image/bl-1.png" alt="" class="w-96 rounded-md">
+                <h4 class="text-gray-500 text-sm font-semibold">25 Jan 2023</h4>
+                <h3 class="text-lg sm:text-xl font-bold text-gray-950">Let's start bring sale on this summer vacation.</h3>
+                <p class="text-gray-500 text-sm font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et commodi quibusdam in illum ad dignissimos sit, ipsa maxime perspiciatis.
+                </p>
+                <h4 class="mt-3 font-semibold">continue reading...</h4>
+            </div>
+            <div class="w-96 px-16 sm:px-4">
+                <img src="./image/bl-2.png" alt="" class="w-96 rounded-md">
+                <h4 class="text-gray-500 text-sm font-semibold">25 Jan 2023</h4>
+                <h3 class="text-lg sm:text-xl font-bold text-gray-950">Let's start bring sale on this summer vacation.</h3>
+                <p class="text-gray-500 text-sm font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et commodi quibusdam in illum ad dignissimos sit, ipsa maxime perspiciatis.
+                </p>
+                <h4 class="mt-3 font-semibold">continue reading...</h4>
+            </div>
+            <div class="w-96 px-16 sm:px-4">
+                <img src="./image/bl-3.png" alt="" class="w-96 rounded-md">
+                <h4 class="text-gray-500 text-sm font-semibold">25 Jan 2023</h4>
+                <h3 class="text-lg sm:text-xl font-bold text-gray-950">Let's start bring sale on this summer vacation.</h3>
+                <p class="text-gray-500 text-sm font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et commodi quibusdam in illum ad dignissimos sit, ipsa maxime perspiciatis.
+                </p>
+                <h4 class="mt-3 font-semibold">continue reading...</h4>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER SECTION -->
+    <footer id="footer" class="bg-[#F6F6F6] pt-5">
+        <div class="flex flex-col gap-y-10 justify-center container mx-auto sm:justify-between sm:flex-row">
+            <div class=" w-full sm:1/4 flex flex-col items-center px-10 text-center sm:items-start sm:text-left sm:text-lg">
+                <img src="./image/logo.png" alt="" class="w-40">
+                <p >3256 Grant Street Longview, TX united Kingdom 755471</p>
+                <p >+923456789012</p>
+                <p >example@hotmail.com</p>
+                <div id="icons" class="text-2xl sm:text-3xl flex gap-x-3 sm:gap-x-5">
+                    <a href=""><i class='bx bxl-facebook hover:text-[#EE1C47] duration-100'></i></a>
+                    <a href=""><i class='bx bxl-twitter hover:text-[#EE1C47] duration-100' ></i></a>
+                    <a href=""><i class='bx bxl-instagram hover:text-[#EE1C47] duration-100' ></i></a>
+                    <a href=""><i class='bx bxl-youtube hover:text-[#EE1C47] duration-100' ></i></a>
+                    <a href=""><i class='bx bxl-linkedin hover:text-[#EE1C47] duration-100' ></i></a>
+                </div>
+            </div>
+            <div class="w-full sm:1/4 flex flex-col items-center px-10 text-center sm:items-start sm:text-left text-sm sm:text-lg">
+                <h3 class="text-xl font-semibold sm:text-2xl">Support</h3>
+                <a href="">Contact</a>
+                <a href="">About Page</a>
+                <a href="">Size Guide</a>
+                <a href="">Shipping & Returns</a>
+                <a href="">Privacy</a>
+            </div>
+            <div class="w-full sm:1/4 flex lg:flex flex-col items-center px-10 text-center sm:items-start sm:text-left text-sm sm:text-lg sm:hidden">
+                <h3 class="text-xl font-semibold sm:text-2xl">Shop</h3>
+                <a href="">Men's Shopping</a>
+                <a href="">Women's Shopping</a>
+                <a href="">Kids's Shopping</a>
+                <a href="">Furniture</a>
+                <a href="">Discounts</a>
+            </div>
+            <div class="w-full sm:1/4 flex lg:flex flex-col items-center px-10 text-center sm:items-start sm:text-left text-sm sm:text-lg sm:hidden">
+                <h3 class="text-xl font-semibold sm:text-2xl">Company</h3>
+                <a href="">About</a>
+                <a href="">Blog</a>
+                <a href="">Affiliate</a>
+                <a href="">Login</a>
+            </div>
+        </div>
+        <div class="text-center py-8 bg-[#F0F0F0] mt-5 sm:text-lg lg:text-xl">
+            Copyright 2023. <i class='bx bx-copyright'></i> All Rights Reserved. Designed By Hamas Munawar
+        </div>
+    </footer>
+
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
