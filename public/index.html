@@ -1,289 +1,2340 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="output.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Kumo — Timeless fashion curated with artisan care. Discover heritage-inspired collections, handpicked styles, and enduring elegance."
+    />
+    <title>Kumo — Timeless Fashion & Heritage Style</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="output.css" />
+  </head>
+  <body>
+    <!-- LOADING SCREEN -->
+    <div id="loadingScreen" class="loading-screen">
+      <div class="loading-spinner"></div>
+      <p
+        style="
+          color: var(--text-muted);
+          font-weight: 500;
+          letter-spacing: 3px;
+          text-transform: uppercase;
+          font-size: 0.7rem;
+          font-family: 'Lora', serif;
+        "
+      >
+        Preparing Your Experience...
+      </p>
+    </div>
 
-    <!-- NAVBAR SECTION -->
-    <section class="flex justify-center bg-[#F6F6F6] sticky top-0 z-10 ">
-        <section id="header" class="container mx-auto flex justify-between text-2xl sm:text-3xl py-4 px-3">
-            <a href=""><img src="./image/logo.png" alt="Logo" class="h-6 sm:h-10"></a>
-            <nav>
-                <ul class=" hidden gap-x-8 lg:flex">
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Home</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Shop</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Products</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Page</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Docs</a></li>
-                </ul>
-            </nav>
-            <div id="icons" class="flex gap-x-2 sm:gap-x-4 items-center relative">
-                <section class="relative">
-                    <input type="search" name="" id="" placeholder="search" class="w-60 px-4 py-1 rounded-md absolute -top-4 right-0 hidden font-light text-base outline-none">
-                </section>
-                <i class='bx bx-search hover:text-[#EE1C47] duration-300 hover:cursor-pointer'></i>
-                <a href=""><i class='bx bx-user hover:text-[#EE1C47] duration-300'></i></a>
-                <a href=""><i class='bx bx-cart hover:text-[#EE1C47] duration-300'></i></a>
-                <i id="hamburger" class='bx bx-menu lg:hidden hover:text-[#EE1C47] duration-300 hover:cursor-pointer'></i>
-                <ul id="mobilenav" class="absolute top-12 -left-4 bg-white px-10 py-4 rounded-md text-center hidden duration-1000">
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Home</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Shop</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Products</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Page</a></li>
-                    <li><a href="#" class="text-xl hover:text-[#EE1C47] duration-300">Docs</a></li>
-                </ul>
+    <!-- CURSOR GLOW (Desktop) -->
+    <div id="cursorGlow" class="cursor-glow hidden lg:block"></div>
+
+    <!-- PROMO BAR -->
+    <div class="promo-banner" id="promoBanner">
+      <span
+        >✦ Seasonal Collection — Up to <strong>50% OFF</strong> on Heritage
+        Pieces · Complimentary Shipping over $100 ✦</span
+      >
+      <button
+        onclick="document.getElementById('promoBanner').style.display = 'none'"
+        style="
+          position: absolute;
+          right: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          background: none;
+          border: none;
+          color: rgba(255, 255, 255, 0.5);
+          cursor: pointer;
+          font-size: 1.1rem;
+          padding: 4px;
+        "
+        aria-label="Close promo"
+      >
+        <i class="bx bx-x"></i>
+      </button>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="nav-glass sticky top-0 z-50">
+      <div
+        class="container mx-auto flex justify-between items-center py-3 px-4 lg:px-6"
+      >
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-2 flex-shrink-0" id="logo-link">
+          <img
+            src="./image/logo.png"
+            alt="Kumo Logo"
+            class="h-7 sm:h-9"
+            style="filter: sepia(20%) saturate(80%)"
+          />
+        </a>
+
+        <!-- Desktop Nav -->
+        <ul class="hidden lg:flex gap-x-10 items-center">
+          <li><a href="#home-section" class="nav-link text-base">Home</a></li>
+          <li>
+            <a href="#products-section" class="nav-link text-base"
+              >Collection</a
+            >
+          </li>
+          <li>
+            <a href="#heritage-section" class="nav-link text-base">Heritage</a>
+          </li>
+          <li>
+            <a href="#updates-section" class="nav-link text-base">Journal</a>
+          </li>
+          <li><a href="#footer" class="nav-link text-base">Contact</a></li>
+          <li>
+            <button
+              id="wishlistDrawerBtn"
+              class="nav-link text-base bg-transparent border-none cursor-pointer flex items-center gap-1"
+            >
+              <i class="bx bx-heart"></i> Wishlist
+              <span
+                id="wishlistCountNav"
+                class="text-xs rounded-full px-1.5 py-0.5 ml-1"
+                style="
+                  background: rgba(139, 34, 82, 0.08);
+                  color: var(--primary);
+                "
+                >0</span
+              >
+            </button>
+          </li>
+        </ul>
+
+        <!-- Icons -->
+        <div class="flex items-center gap-1 sm:gap-2">
+          <button
+            id="themeToggle"
+            class="icon-btn text-xl"
+            aria-label="Toggle Dark Mode"
+          >
+            <i class="bx bx-moon"></i>
+          </button>
+          <button
+            id="searchToggle"
+            class="icon-btn text-xl"
+            aria-label="Search"
+          >
+            <i class="bx bx-search"></i>
+          </button>
+          <button
+            id="profileBtn"
+            class="icon-btn text-xl"
+            aria-label="User account"
+          >
+            <i class="bx bx-user"></i>
+          </button>
+          <button
+            id="cartDrawerBtn"
+            class="icon-btn text-xl relative"
+            aria-label="Shopping cart"
+          >
+            <i class="bx bx-shopping-bag"></i>
+            <span id="cartBadge" class="cart-badge">0</span>
+          </button>
+          <button
+            id="hamburgerBtn"
+            class="icon-btn text-xl lg:hidden"
+            aria-label="Menu"
+          >
+            <i class="bx bx-menu"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MOBILE NAV OVERLAY -->
+    <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+
+    <!-- MOBILE NAV PANEL -->
+    <div id="mobileNavPanel" class="mobile-nav-panel">
+      <button
+        id="mobileNavClose"
+        class="mobile-nav-close"
+        aria-label="Close menu"
+      >
+        <i class="bx bx-x"></i>
+      </button>
+      <a href="#home-section" class="mobile-nav-link">Home</a>
+      <a href="#products-section" class="mobile-nav-link">Collection</a>
+      <a href="#heritage-section" class="mobile-nav-link">Heritage</a>
+      <a href="#updates-section" class="mobile-nav-link">Journal</a>
+      <a href="#footer" class="mobile-nav-link">Contact</a>
+      <div
+        style="
+          margin-top: auto;
+          padding: 16px;
+          border-top: 1px solid rgba(196, 162, 101, 0.1);
+        "
+      >
+        <p
+          style="
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            font-family: 'Lora', serif;
+          "
+        >
+          © 2025 Kumo Atelier
+        </p>
+      </div>
+    </div>
+
+    <!-- SEARCH BAR (Compact Top Dropdown) -->
+    <div id="searchOverlay" class="search-overlay">
+      <div class="search-panel">
+        <div class="search-input-wrapper">
+          <i class="bx bx-search search-icon-left"></i>
+          <input
+            type="text"
+            placeholder="Search our collection..."
+            id="searchInput"
+            autocomplete="off"
+          />
+          <button class="search-clear-btn" id="searchClear" aria-label="Clear search" style="display: none">
+            <i class="bx bx-x"></i>
+          </button>
+          <button class="search-close" id="searchClose" aria-label="Close search">
+            <i class="bx bx-chevron-up"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section id="home-section">
+      <section id="homeWrapper" class="relative min-h-[85vh] flex items-center">
+        <!-- Subtle decorative shapes -->
+        <div
+          class="floating-shape"
+          style="
+            width: 250px;
+            height: 250px;
+            top: 12%;
+            right: 18%;
+            animation-delay: 0s;
+          "
+        ></div>
+        <div
+          class="floating-shape"
+          style="
+            width: 180px;
+            height: 180px;
+            bottom: 18%;
+            right: 38%;
+            animation-delay: 3s;
+          "
+        ></div>
+
+        <section id="home" class="container mx-auto px-4 lg:px-6">
+          <div
+            class="sm:w-2/3 flex flex-col justify-center gap-y-5 py-20 sm:py-0 relative z-10"
+            style="padding-left: 1rem"
+          >
+            <p
+              class="hero-subtitle reveal font-semibold tracking-widest uppercase text-xs"
+            >
+              Autumn & Winter Collection
+            </p>
+            <h1
+              class="hero-title text-5xl sm:text-7xl md:text-8xl lg:text-[6.5rem] font-black leading-none reveal"
+              style="transition-delay: 0.1s; letter-spacing: -0.02em"
+            >
+              Timeless<br />Elegance.
+            </h1>
+            <p
+              class="text-lg reveal mt-2"
+              style="
+                transition-delay: 0.2s;
+                max-width: 460px;
+                line-height: 1.8;
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.15rem;
+              "
+            >
+              Curated fashion pieces crafted with heritage artistry. Each
+              garment tells a story of enduring style and refined sensibility.
+            </p>
+            <div
+              class="flex flex-wrap items-center gap-4 reveal"
+              style="transition-delay: 0.3s"
+            >
+              <a href="#products-section" class="hero-cta ripple">
+                Explore Collection
+                <i
+                  class="bx bx-right-arrow-alt ml-2"
+                  style="font-size: 1rem"
+                ></i>
+              </a>
+              <button
+                id="watchStoryBtn"
+                class="flex items-center gap-3 transition-colors bg-transparent border-none cursor-pointer"
+                style="
+                  font-weight: 500;
+                  color: var(--text-secondary);
+                  font-family: 'Lora', serif;
+                "
+              >
+                <span
+                  class="flex items-center justify-center w-10 h-10 rounded-full shadow-md transition-transform hover:scale-110"
+                  style="
+                    color: var(--primary);
+                    background: var(--cream);
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                  "
+                >
+                  <i class="bx bx-play" style="font-size: 1.2rem"></i>
+                </span>
+                Our Story
+              </button>
             </div>
+          </div>
         </section>
+      </section>
     </section>
 
-
-    <!-- HOME SECTION -->
-    <section id="homeWrapper" class=" relative">
-        <section id="home" class="container mx-auto pl-2">
-            <div class="sm:w-1/2 flex flex-col justify-center gap-y-1 py-32 sm:h-screen sm:justify-center sm:my-0">
-                <h3 class="text-base sm:text-lg text-[#EE1C47] font-semibold">Winter Collection</h3>
-                <h2 class="text-4xl font-bold sm:text-7xl">New Winter <br>Collection 2023</h2>
-                <p class="text-lg"><i>There's nothing like trend</i></p>
-                <a href="" class="px-4 py-2 border-2 w-fit border-black text-lg sm:text-xl hover:bg-gray-950 hover:text-white duration-500">Shop Now <i class='bx bx-right-arrow-alt ml-1'></i></a>
-            </div>
-        </section>
+    <!-- ===== BRAND HERITAGE MARQUEE ===== -->
+    <section class="marquee-wrapper">
+      <div class="marquee-content">
+        <span>NIKE</span><span class="dot">✦</span> <span>ADIDAS</span
+        ><span class="dot">✦</span> <span>GUCCI</span><span class="dot">✦</span>
+        <span>PRADA</span><span class="dot">✦</span> <span>ZARA</span
+        ><span class="dot">✦</span> <span>H&M</span><span class="dot">✦</span>
+        <span>VERSACE</span><span class="dot">✦</span> <span>DIOR</span
+        ><span class="dot">✦</span> <span>CHANEL</span
+        ><span class="dot">✦</span> <span>BURBERRY</span
+        ><span class="dot">✦</span>
+        <!-- Duplicate for seamless loop -->
+        <span>NIKE</span><span class="dot">✦</span> <span>ADIDAS</span
+        ><span class="dot">✦</span> <span>GUCCI</span><span class="dot">✦</span>
+        <span>PRADA</span><span class="dot">✦</span> <span>ZARA</span
+        ><span class="dot">✦</span> <span>H&M</span><span class="dot">✦</span>
+        <span>VERSACE</span><span class="dot">✦</span> <span>DIOR</span
+        ><span class="dot">✦</span> <span>CHANEL</span
+        ><span class="dot">✦</span> <span>BURBERRY</span
+        ><span class="dot">✦</span>
+      </div>
     </section>
 
-
-
-    <!-- OUR TRENDING PRODUCTS -->
-    <section class="container mx-auto my-10 sm:my-16 px-2">
-        <h2 class="text-center text-xl font-bold sm:text-4xl"> Our Trending <span class="text-[#EE1C47]">Products</span></h2>
-        <div id="products" class="mt-10 flex flex-col items-center sm:flex-row sm:flex-wrap sm:justify-center gap-6 2xl:gap-8">
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Sale</p>
-                <img src="./image/1.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Half Running Set</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-
-                <img src="./image/2.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Formal Men Lowers</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Hot</p>
-                <img src="./image/3.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Half Running Suit</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">New</p>
-                <img src="./image/4.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Half Fancy Lady Dredd</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-
-                <img src="./image/5.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Flix Flox jeans</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">New</p>
-                <img src="./image/6.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Fancy Salwar Suits</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Sale</p>
-                <img src="./image/7.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Printed Straigth Kurta</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
-            <div class="flex flex-col gap-y-1 sm:gap-y-2 relative">
-                <p class="px-3 py-1 bg-green-500 rounded-md absolute top-4 left-4 z-[2]">Sale</p>
-                <img src="./image/8.jpg" alt="" class="w-72 2xl:w-80 hover:scale-90 duration-300">
-                <div class="flex justify-between px-1 text-lg sm:text-xl">
-                    <div id="starts" class="flex gap-x-1 text-orange-600">
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star' ></i>
-                        <i class='bx bxs-star-half' ></i>
-                    </div>
-                    <i class='bx bx-heart hover:text-[#EE1C47] duration-100'></i>
-                </div>
-                <h3 class="text-lg sm:text-xl">Collot Full Dress</h3>
-                <h4 class="text-lg sm:text-xl"><b>$99-$129</b></h3>
-            </div>
+    <!-- ===== HERITAGE VALUES ===== -->
+    <section id="heritage-section" class="heritage-section">
+      <div class="container mx-auto">
+        <div class="heritage-grid reveal">
+          <div class="heritage-item">
+            <div class="heritage-number" data-count="200">0+</div>
+            <div class="heritage-label">Curated Brands</div>
+          </div>
+          <div class="heritage-item">
+            <div class="heritage-number" data-count="15">0k+</div>
+            <div class="heritage-label">Artisan Pieces</div>
+          </div>
+          <div class="heritage-item">
+            <div class="heritage-number" data-count="50">0k+</div>
+            <div class="heritage-label">Satisfied Patrons</div>
+          </div>
         </div>
+      </div>
     </section>
 
-
-    <!-- CLIENT REVIEW -->
-    <section id="clientreview" class="w-full bg-[#F6F6F6] flex justify-center p-14">
-        <div class="w-full sm:w-3/4 flex flex-col items-center text-center gap-3">
-            <h2 class="text-2xl font-bold sm:text-3xl">Client Review</h2>
-            <img src="./image/team-1.jpg" alt="" class="rounded-full h-40">
-            <p class="sm:text-lg text-gray-500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti ea praesentium nostrum esse dicta necessitatibus vero quam maxime, ipsum cum tempore modi! Deleniti corrupti quis id debitis dicta iure dolore.</p>
-            <h2 class="text-xl font-semibold sm:text-2xl">Mark Jevenue</h2>
-            <h3 class="sm:text-lg text-gray-500">CEO of Addle</h3>
+    <!-- ===== FEATURES / TRUST BADGES ===== -->
+    <section
+      id="features-section"
+      class="container mx-auto py-14 sm:py-20 px-4"
+    >
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+        <div class="feature-card reveal stagger-1">
+          <div class="feature-icon">
+            <i class="bx bxs-truck"></i>
+          </div>
+          <h4
+            class="font-semibold text-sm sm:text-base mb-1"
+            style="font-family: 'Lora', serif"
+          >
+            Complimentary Shipping
+          </h4>
+          <p class="text-xs sm:text-sm" style="color: var(--text-muted)">
+            On orders over $100
+          </p>
         </div>
+        <div class="feature-card reveal stagger-2">
+          <div class="feature-icon">
+            <i class="bx bx-refresh"></i>
+          </div>
+          <h4
+            class="font-semibold text-sm sm:text-base mb-1"
+            style="font-family: 'Lora', serif"
+          >
+            Effortless Returns
+          </h4>
+          <p class="text-xs sm:text-sm" style="color: var(--text-muted)">
+            30-day return policy
+          </p>
+        </div>
+        <div class="feature-card reveal stagger-3">
+          <div class="feature-icon">
+            <i class="bx bx-shield-quarter"></i>
+          </div>
+          <h4
+            class="font-semibold text-sm sm:text-base mb-1"
+            style="font-family: 'Lora', serif"
+          >
+            Secure Checkout
+          </h4>
+          <p class="text-xs sm:text-sm" style="color: var(--text-muted)">
+            100% encrypted
+          </p>
+        </div>
+        <div class="feature-card reveal stagger-4">
+          <div class="feature-icon">
+            <i class="bx bx-support"></i>
+          </div>
+          <h4
+            class="font-semibold text-sm sm:text-base mb-1"
+            style="font-family: 'Lora', serif"
+          >
+            Personal Concierge
+          </h4>
+          <p class="text-xs sm:text-sm" style="color: var(--text-muted)">
+            Dedicated styling help
+          </p>
+        </div>
+      </div>
     </section>
 
+    <!-- ===== EDITORIAL STORY SECTION ===== -->
+    <section class="story-section container mx-auto pb-14 sm:pb-24 px-4">
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 items-center max-w-6xl mx-auto"
+      >
+        <div class="story-image-wrapper reveal-left relative">
+          <img
+            src="./image/banner-3.png"
+            alt="Kumo Artisan Story"
+            class="w-full h-auto"
+            style="border-radius: var(--radius-md)"
+          />
+        </div>
+        <div class="story-content reveal-right">
+          <p class="story-subtitle">Our Philosophy</p>
+          <h2 class="story-heading">
+            Crafted With
+            <em style="color: var(--primary); font-style: italic">Intent</em>
+          </h2>
+          <p class="story-text mb-5">
+            At Kumo, we believe in the quiet power of well-made things. Every
+            piece in our collection is sourced from artisans who honour
+            traditional craftsmanship while embracing contemporary silhouettes.
+          </p>
+          <p class="story-text mb-7">
+            Our name — <em>Kumo</em>, meaning "cloud" in Japanese — reflects our
+            aspiration: lightness in design, depth in quality.
+          </p>
+          <a
+            href="#products-section"
+            class="hero-cta ripple"
+          >
+            Discover More
+            <i class="bx bx-right-arrow-alt ml-2" style="font-size: 1rem"></i>
+          </a>
+        </div>
+      </div>
+    </section>
 
-    <!-- NEW UPDATES -->
-    <section id="newupdates" class="container mx-auto flex flex-col items-center my-10 sm:my-16 px-4">
-        <h2 class="text-2xl sm:text-3xl font-bold">New Updates</h2>
-        <div class="flex flex-wrap gap-x-2 gap-y-10 my-10 justify-center">
-            <div class="w-96 px-16 sm:px-4">
-                <img src="./image/bl-1.png" alt="" class="w-96 rounded-md">
-                <h4 class="text-gray-500 text-sm font-semibold">25 Jan 2023</h4>
-                <h3 class="text-lg sm:text-xl font-bold text-gray-950">Let's start bring sale on this summer vacation.</h3>
-                <p class="text-gray-500 text-sm font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et commodi quibusdam in illum ad dignissimos sit, ipsa maxime perspiciatis.
+    <!-- ===== CURATED COLLECTION (PRODUCTS) ===== -->
+    <section
+      id="products-section"
+      class="container mx-auto pb-14 sm:pb-24 px-4"
+    >
+      <div class="text-center mb-10 reveal">
+        <p
+          style="
+            font-family: 'Lora', serif;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 0.75rem;
+          "
+        >
+          Handpicked For You
+        </p>
+        <h2 class="section-title text-2xl sm:text-4xl font-bold">
+          Curated <span style="color: var(--primary)">Collection</span>
+        </h2>
+        <p
+          class="mt-5 max-w-lg mx-auto text-sm sm:text-base"
+          style="
+            color: var(--text-secondary);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+          "
+        >
+          Timeless selections from this season's most cherished styles
+        </p>
+      </div>
+
+      <!-- Category Filters -->
+      <div
+        class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 reveal"
+        style="transition-delay: 0.1s"
+      >
+        <button class="category-pill active" data-filter="all">All</button>
+        <button class="category-pill" data-filter="women">Women</button>
+        <button class="category-pill" data-filter="men">Men</button>
+        <button class="category-pill" data-filter="accessories">
+          Accessories
+        </button>
+        <button class="category-pill" data-filter="new">New Arrivals</button>
+      </div>
+
+      <!-- Active search filter indicator -->
+      <div id="activeFilterIndicator" class="active-filter-indicator" style="display: none">
+        <i class="bx bx-search" style="color: var(--gold-muted); font-size: 1rem"></i>
+        <span id="filterQueryText" style="font-family: 'Lora', serif; font-size: 0.85rem; color: var(--text-secondary)"></span>
+        <button onclick="clearSearch()" class="clear-filter-btn">
+          Clear <i class="bx bx-x" style="font-size: 0.9rem"></i>
+        </button>
+      </div>
+
+      <!-- Product Grid -->
+      <div
+        id="productGrid"
+        class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 2xl:gap-6"
+      >
+        <!-- Product 1 -->
+        <div class="product-card reveal stagger-1" data-category="women" data-id="1">
+          <div class="product-image-wrapper">
+            <span class="product-badge sale">Sale</span>
+            <img src="./image/1.jpg" alt="Half Running Set" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="1"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="1"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="1"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star-half"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(4.5)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="1"></i>
+            </div>
+            <h3 class="product-name">Half Running Set</h3>
+            <p class="product-price" data-price="99">
+              $99 <span class="original-price">$129</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div
+          class="product-card reveal stagger-2"
+          data-category="men"
+          data-id="2"
+        >
+          <div class="product-image-wrapper">
+            <img src="./image/2.jpg" alt="Formal Men Lowers" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="2"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="2"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="2"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(4.0)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="2"></i>
+            </div>
+            <h3 class="product-name">Formal Men Lowers</h3>
+            <p class="product-price" data-price="89">
+              $89 <span class="original-price">$119</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card reveal stagger-3" data-category="women" data-id="3">
+          <div class="product-image-wrapper">
+            <span class="product-badge hot">Hot</span>
+            <img src="./image/3.jpg" alt="Half Running Suit" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="3"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="3"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="3"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(5.0)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="3"></i>
+            </div>
+            <h3 class="product-name">Half Running Suit</h3>
+            <p class="product-price" data-price="109">
+              $109 <span class="original-price">$149</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div
+          class="product-card reveal stagger-4"
+          data-category="new women"
+          data-id="4"
+        >
+          <div class="product-image-wrapper">
+            <span class="product-badge new">New</span>
+            <img src="./image/4.jpg" alt="Fancy Lady Dress" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="4"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="4"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="4"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star-half"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(4.6)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="4"></i>
+            </div>
+            <h3 class="product-name">Fancy Lady Dress</h3>
+            <p class="product-price" data-price="79">
+              $79 <span class="original-price">$99</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card reveal stagger-5" data-category="men" data-id="5">
+          <div class="product-image-wrapper">
+            <img src="./image/5.jpg" alt="Flix Flox Jeans" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="5"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="5"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="5"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(4.0)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="5"></i>
+            </div>
+            <h3 class="product-name">Flix Flox Jeans</h3>
+            <p class="product-price" data-price="69">
+              $69 <span class="original-price">$89</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div
+          class="product-card reveal stagger-6"
+          data-category="new women"
+          data-id="6"
+        >
+          <div class="product-image-wrapper">
+            <span class="product-badge new">New</span>
+            <img src="./image/6.jpg" alt="Fancy Salwar Suits" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="6"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="6"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="6"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star-half"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(4.7)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="6"></i>
+            </div>
+            <h3 class="product-name">Fancy Salwar Suits</h3>
+            <p class="product-price" data-price="119">
+              $119 <span class="original-price">$159</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div
+          class="product-card reveal stagger-7"
+          data-category="women accessories"
+          data-id="7"
+        >
+          <div class="product-image-wrapper">
+            <span class="product-badge sale">Sale</span>
+            <img
+              src="./image/7.jpg"
+              alt="Printed Straight Kurta"
+              loading="lazy"
+            />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="7"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="7"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="7"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(5.0)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="7"></i>
+            </div>
+            <h3 class="product-name">Printed Straight Kurta</h3>
+            <p class="product-price" data-price="59">
+              $59 <span class="original-price">$99</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div
+          class="product-card reveal stagger-8"
+          data-category="women accessories"
+          data-id="8"
+        >
+          <div class="product-image-wrapper">
+            <span class="product-badge sale">Sale</span>
+            <img src="./image/8.jpg" alt="Collot Full Dress" loading="lazy" />
+            <div class="product-overlay">
+              <button
+                class="overlay-btn quick-view-btn"
+                title="Quick View"
+                data-product="8"
+              >
+                <i class="bx bx-show"></i>
+              </button>
+              <button
+                class="overlay-btn add-to-cart-btn"
+                title="Add to Cart"
+                data-product="8"
+              >
+                <i class="bx bx-cart-add"></i>
+              </button>
+              <button
+                class="overlay-btn wishlist-toggle"
+                title="Add to Wishlist"
+                data-product="8"
+              >
+                <i class="bx bx-heart"></i>
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="flex justify-between items-center mb-2">
+              <div class="star-rating">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+                <span class="text-xs ml-1" style="color: var(--text-muted)"
+                  >(4.2)</span
+                >
+              </div>
+              <i class="bx bx-heart wishlist-btn" data-product="8"></i>
+            </div>
+            <h3 class="product-name">Collot Full Dress</h3>
+            <p class="product-price" data-price="89">
+              $89 <span class="original-price">$129</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CLIENT REVIEWS ===== -->
+    <section
+      id="reviews-section"
+      class="testimonial-section py-14 sm:py-24 px-4"
+    >
+      <div class="container mx-auto">
+        <div class="text-center mb-12 reveal">
+          <p
+            style="
+              font-family: 'Lora', serif;
+              font-size: 0.72rem;
+              letter-spacing: 3px;
+              text-transform: uppercase;
+              color: var(--gold-muted);
+              margin-bottom: 0.75rem;
+            "
+          >
+            Voices of Our Patrons
+          </p>
+          <h2 class="section-title text-2xl sm:text-4xl font-bold">
+            Words of <span style="color: var(--primary)">Appreciation</span>
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto items-stretch"
+        >
+          <!-- Review 1 -->
+          <div
+            class="editorial-card reveal stagger-1"
+          >
+            <div class="flex items-center gap-4 mb-5 relative z-10">
+              <img
+                src="./image/team-1.jpg"
+                alt="Mark Jevenue"
+                class="w-14 h-14 rounded-full object-cover"
+                style="
+                  filter: sepia(8%);
+                  border: 2px solid rgba(196, 162, 101, 0.15);
+                "
+              />
+              <div>
+                <h4
+                  class="font-bold text-base"
+                  style="font-family: 'Playfair Display', serif"
+                >
+                  Mark Jevenue
+                </h4>
+                <p
+                  class="text-xs uppercase tracking-widest"
+                  style="
+                    color: var(--text-muted);
+                    font-family: 'Lora', serif;
+                    letter-spacing: 2px;
+                  "
+                >
+                  CEO of Addle
                 </p>
-                <h4 class="mt-3 font-semibold">continue reading...</h4>
+              </div>
             </div>
-            <div class="w-96 px-16 sm:px-4">
-                <img src="./image/bl-2.png" alt="" class="w-96 rounded-md">
-                <h4 class="text-gray-500 text-sm font-semibold">25 Jan 2023</h4>
-                <h3 class="text-lg sm:text-xl font-bold text-gray-950">Let's start bring sale on this summer vacation.</h3>
-                <p class="text-gray-500 text-sm font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et commodi quibusdam in illum ad dignissimos sit, ipsa maxime perspiciatis.
+            <div class="star-rating mb-3 text-base">
+              <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star"></i>
+            </div>
+            <p
+              class="text-base leading-relaxed relative z-10 italic"
+              style="
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.05rem;
+              "
+            >
+              "The quality of clothing from Kumo is absolutely unmatched. Every
+              piece I've ordered has exceeded my expectations. The fabric, the
+              stitching, the fit — perfect."
+            </p>
+          </div>
+
+          <!-- Review 2 -->
+          <div
+            class="editorial-card reveal stagger-2"
+            style="background: var(--dark); color: var(--cream)"
+          >
+            <div class="flex items-center gap-4 mb-5 relative z-10">
+              <div
+                class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--burgundy)
+                  );
+                  color: var(--cream);
+                  font-family: 'Playfair Display', serif;
+                "
+              >
+                S
+              </div>
+              <div>
+                <h4
+                  class="font-bold text-base"
+                  style="font-family: 'Playfair Display', serif"
+                >
+                  Sarah Mitchell
+                </h4>
+                <p
+                  class="text-xs uppercase tracking-widest"
+                  style="
+                    color: rgba(255, 255, 255, 0.35);
+                    font-family: 'Lora', serif;
+                    letter-spacing: 2px;
+                  "
+                >
+                  Fashion Blogger
                 </p>
-                <h4 class="mt-3 font-semibold">continue reading...</h4>
+              </div>
             </div>
-            <div class="w-96 px-16 sm:px-4">
-                <img src="./image/bl-3.png" alt="" class="w-96 rounded-md">
-                <h4 class="text-gray-500 text-sm font-semibold">25 Jan 2023</h4>
-                <h3 class="text-lg sm:text-xl font-bold text-gray-950">Let's start bring sale on this summer vacation.</h3>
-                <p class="text-gray-500 text-sm font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus et commodi quibusdam in illum ad dignissimos sit, ipsa maxime perspiciatis.
+            <div class="star-rating mb-3 text-base">
+              <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star-half"></i>
+            </div>
+            <p
+              class="text-base leading-relaxed relative z-10 italic"
+              style="
+                color: rgba(255, 255, 255, 0.55);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.05rem;
+              "
+            >
+              "I've been recommending Kumo to all my followers. The winter
+              collection was stunning and the customer service is top-notch.
+              Fast shipping and beautiful packaging too!"
+            </p>
+          </div>
+
+          <!-- Review 3 -->
+          <div
+            class="editorial-card reveal stagger-3"
+          >
+            <div class="flex items-center gap-4 mb-5 relative z-10">
+              <div
+                class="w-14 h-14 rounded-full flex items-center justify-center text-xl font-bold flex-shrink-0"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    var(--gold-muted),
+                    var(--accent)
+                  );
+                  color: var(--dark);
+                  font-family: 'Playfair Display', serif;
+                "
+              >
+                J
+              </div>
+              <div>
+                <h4
+                  class="font-bold text-base"
+                  style="font-family: 'Playfair Display', serif"
+                >
+                  James Rodriguez
+                </h4>
+                <p
+                  class="text-xs uppercase tracking-widest"
+                  style="
+                    color: var(--text-muted);
+                    font-family: 'Lora', serif;
+                    letter-spacing: 2px;
+                  "
+                >
+                  Loyal Patron
                 </p>
-                <h4 class="mt-3 font-semibold">continue reading...</h4>
+              </div>
             </div>
+            <div class="star-rating mb-3 text-base">
+              <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star"></i>
+            </div>
+            <p
+              class="text-base leading-relaxed relative z-10 italic"
+              style="
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.05rem;
+              "
+            >
+              "Five stars all the way! The sale prices are incredible for such
+              premium quality items. I ordered three outfits and every single
+              one fits like it was custom tailored."
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
+    <!-- ===== NEWSLETTER CTA ===== -->
+    <section class="newsletter-section py-16 sm:py-24 px-4">
+      <div class="container mx-auto relative z-10 text-center">
+        <p
+          style="
+            font-family: 'Lora', serif;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 0.75rem;
+          "
+          class="reveal"
+        >
+          Join the Inner Circle
+        </p>
+        <h2
+          class="text-2xl sm:text-4xl font-bold reveal"
+          style="
+            font-family: 'Playfair Display', serif;
+            color: var(--cream);
+          "
+        >
+          The Kumo
+          <span style="color: var(--gold-muted)"><em>Gazette</em></span>
+        </h2>
+        <p
+          class="mt-3 mb-8 max-w-md mx-auto reveal"
+          style="
+            transition-delay: 0.1s;
+            color: rgba(255, 255, 255, 0.35);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+          "
+        >
+          Subscribe for exclusive previews, styling notes, and 15% off your
+          inaugural order.
+        </p>
+        <div
+          class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto reveal"
+          style="transition-delay: 0.2s"
+        >
+          <input
+            type="email"
+            placeholder="Your email address..."
+            class="newsletter-input flex-1"
+            id="newsletterEmail"
+          />
+          <button class="newsletter-btn" id="newsletterBtn">Subscribe</button>
+        </div>
+      </div>
+    </section>
 
-    <!-- FOOTER SECTION -->
-    <footer id="footer" class="bg-[#F6F6F6] pt-5">
-        <div class="flex flex-col gap-y-10 justify-center container mx-auto sm:justify-between sm:flex-row">
-            <div class=" w-full sm:1/4 flex flex-col items-center px-10 text-center sm:items-start sm:text-left sm:text-lg">
-                <img src="./image/logo.png" alt="" class="w-40">
-                <p >3256 Grant Street Longview, TX united Kingdom 755471</p>
-                <p >+923456789012</p>
-                <p >example@hotmail.com</p>
-                <div id="icons" class="text-2xl sm:text-3xl flex gap-x-3 sm:gap-x-5">
-                    <a href=""><i class='bx bxl-facebook hover:text-[#EE1C47] duration-100'></i></a>
-                    <a href=""><i class='bx bxl-twitter hover:text-[#EE1C47] duration-100' ></i></a>
-                    <a href=""><i class='bx bxl-instagram hover:text-[#EE1C47] duration-100' ></i></a>
-                    <a href=""><i class='bx bxl-youtube hover:text-[#EE1C47] duration-100' ></i></a>
-                    <a href=""><i class='bx bxl-linkedin hover:text-[#EE1C47] duration-100' ></i></a>
-                </div>
-            </div>
-            <div class="w-full sm:1/4 flex flex-col items-center px-10 text-center sm:items-start sm:text-left text-sm sm:text-lg">
-                <h3 class="text-xl font-semibold sm:text-2xl">Support</h3>
-                <a href="">Contact</a>
-                <a href="">About Page</a>
-                <a href="">Size Guide</a>
-                <a href="">Shipping & Returns</a>
-                <a href="">Privacy</a>
-            </div>
-            <div class="w-full sm:1/4 flex lg:flex flex-col items-center px-10 text-center sm:items-start sm:text-left text-sm sm:text-lg sm:hidden">
-                <h3 class="text-xl font-semibold sm:text-2xl">Shop</h3>
-                <a href="">Men's Shopping</a>
-                <a href="">Women's Shopping</a>
-                <a href="">Kids's Shopping</a>
-                <a href="">Furniture</a>
-                <a href="">Discounts</a>
-            </div>
-            <div class="w-full sm:1/4 flex lg:flex flex-col items-center px-10 text-center sm:items-start sm:text-left text-sm sm:text-lg sm:hidden">
-                <h3 class="text-xl font-semibold sm:text-2xl">Company</h3>
-                <a href="">About</a>
-                <a href="">Blog</a>
-                <a href="">Affiliate</a>
-                <a href="">Login</a>
-            </div>
+    <!-- ===== BLOG / JOURNAL ===== -->
+    <section id="updates-section" class="container mx-auto py-14 sm:py-24 px-4">
+      <div class="text-center mb-12 reveal">
+        <p
+          style="
+            font-family: 'Lora', serif;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 0.75rem;
+          "
+        >
+          From Our Desk
+        </p>
+        <h2 class="section-title text-2xl sm:text-4xl font-bold">
+          The Kumo <span style="color: var(--primary)">Journal</span>
+        </h2>
+        <p
+          class="mt-5 text-sm sm:text-base"
+          style="
+            color: var(--text-secondary);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+          "
+        >
+          Fashion insights, style notes, and stories from our atelier
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        <!-- Blog 1 -->
+        <div
+          class="blog-card reveal stagger-1 bg-transparent border-0 shadow-none"
+        >
+          <div class="blog-image arch-image" style="height: 320px">
+            <img
+              src="./image/bl-1.png"
+              alt="Summer Sale Blog"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+            <span
+              class="blog-date"
+              style="
+                bottom: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                top: auto;
+              "
+              ><i class="bx bx-calendar mr-1"></i> Jan 25, 2025</span
+            >
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Fashion</span>
+            <h3
+              class="font-bold text-lg mb-2 leading-snug"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Seasonal Sale — Heritage Pieces at 50% Off
+            </h3>
+            <p
+              class="text-sm mb-4 leading-relaxed"
+              style="
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+              "
+            >
+              Discover our curated sale featuring timeless pieces with enduring
+              appeal for every occasion...
+            </p>
+            <a href="#" class="read-more">
+              Read More <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
         </div>
-        <div class="text-center py-8 bg-[#F0F0F0] mt-5 sm:text-lg lg:text-xl">
-            Copyright 2023. <i class='bx bx-copyright'></i> All Rights Reserved. Designed By Hamas Munawar
+
+        <!-- Blog 2 -->
+        <div
+          class="blog-card reveal stagger-2 bg-transparent border-0 shadow-none md:mt-8"
+        >
+          <div class="blog-image arch-image" style="height: 320px">
+            <img
+              src="./image/bl-2.png"
+              alt="Style Guide Blog"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+            <span
+              class="blog-date"
+              style="bottom: 20px; left: 50%; transform: translateX(-50%)"
+              ><i class="bx bx-calendar mr-1"></i> Feb 10, 2025</span
+            >
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Guide</span>
+            <h3
+              class="font-bold text-lg mb-2 leading-snug"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Five Wardrobe Essentials That Endure
+            </h3>
+            <p
+              class="text-sm mb-4 leading-relaxed"
+              style="
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+              "
+            >
+              Build a versatile wardrobe with these timeless pieces that
+              transcend seasons and trends...
+            </p>
+            <a href="#" class="read-more">
+              Read More <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
         </div>
+
+        <!-- Blog 3 -->
+        <div
+          class="blog-card reveal stagger-3 bg-transparent border-0 shadow-none md:-mt-4"
+        >
+          <div class="blog-image arch-image" style="height: 320px">
+            <img
+              src="./image/bl-3.png"
+              alt="Trends Blog"
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+            <span
+              class="blog-date"
+              style="bottom: 20px; left: 50%; transform: translateX(-50%)"
+              ><i class="bx bx-calendar mr-1"></i> Mar 5, 2025</span
+            >
+          </div>
+          <div class="blog-content">
+            <span class="blog-category">Editorial</span>
+            <h3
+              class="font-bold text-lg mb-2 leading-snug"
+              style="font-family: 'Playfair Display', serif"
+            >
+              The Art of Winter Dressing
+            </h3>
+            <p
+              class="text-sm mb-4 leading-relaxed"
+              style="
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+              "
+            >
+              From heritage knits to statement overcoats, explore the artistry
+              of winter fashion...
+            </p>
+            <a href="#" class="read-more">
+              Read More <i class="bx bx-right-arrow-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ SECTION (Smooth accordion — no jitter) ===== -->
+    <section
+      id="faq-section"
+      class="container mx-auto py-14 sm:py-24 px-4 max-w-4xl"
+    >
+      <div class="text-center mb-12 reveal">
+        <p
+          style="
+            font-family: 'Lora', serif;
+            font-size: 0.72rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-muted);
+            margin-bottom: 0.75rem;
+          "
+        >
+          Need Assistance?
+        </p>
+        <h2 class="section-title text-2xl sm:text-4xl font-bold">
+          Frequently Asked <span style="color: var(--primary)">Questions</span>
+        </h2>
+        <p
+          class="mt-5 text-sm sm:text-base"
+          style="
+            color: var(--text-secondary);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+          "
+        >
+          Everything you need to know about shopping with us
+        </p>
+      </div>
+
+      <div class="faq-container reveal">
+        <!-- FAQ 1 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>What is your return policy?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              We accept returns within 30 days of purchase for a full refund.
+              Items must be in original condition with tags attached. Shipping
+              costs for returns are non-refundable unless the item received was
+              defective.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>How do I track my order?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Once your order ships, you will receive an email with a tracking
+              number and a link to view the status of your delivery. You can
+              also view your order status in your Account Dashboard.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Do you offer international shipping?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Yes, we ship to over 50 countries worldwide. International
+              shipping rates are calculated at checkout based on destination and
+              package weight. Customs duties and taxes may apply upon delivery.
+            </p>
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Are your products true to size?</span>
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>
+              Most of our apparel fits true to size. However, we recommend
+              checking our detailed Size Guide linked on every product page, as
+              some items may have an oversized or tailored fit depending on the
+              style.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer id="footer" class="footer-main pt-14 pb-0">
+      <div class="container mx-auto px-5">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 pb-12"
+        >
+          <!-- Column 1 - Brand -->
+          <div class="reveal stagger-1">
+            <img
+              src="./image/logo.png"
+              alt="Kumo"
+              class="w-28 mb-4"
+              style="filter: brightness(0) invert(1) sepia(20%) saturate(50%)"
+            />
+            <p
+              class="text-sm leading-relaxed mb-4"
+              style="
+                color: rgba(255, 255, 255, 0.35);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 0.95rem;
+              "
+            >
+              3256 Grant Street<br />Longview, TX<br />United Kingdom 755471
+            </p>
+            <p
+              class="text-sm mb-1"
+              style="
+                color: rgba(255, 255, 255, 0.35);
+                font-family: 'Lora', serif;
+                font-size: 0.85rem;
+              "
+            >
+              <i class="bx bx-phone mr-2" style="color: var(--gold-muted)"></i
+              >+92 345 678 9012
+            </p>
+            <p
+              class="text-sm mb-5"
+              style="
+                color: rgba(255, 255, 255, 0.35);
+                font-family: 'Lora', serif;
+                font-size: 0.85rem;
+              "
+            >
+              <i
+                class="bx bx-envelope mr-2"
+                style="color: var(--gold-muted)"
+              ></i
+              >hello@kumo.com
+            </p>
+            <div class="flex gap-2.5">
+              <a href="#" class="footer-social-icon" aria-label="Facebook"
+                ><i class="bx bxl-facebook"></i
+              ></a>
+              <a href="#" class="footer-social-icon" aria-label="Twitter"
+                ><i class="bx bxl-twitter"></i
+              ></a>
+              <a href="#" class="footer-social-icon" aria-label="Instagram"
+                ><i class="bx bxl-instagram"></i
+              ></a>
+              <a href="#" class="footer-social-icon" aria-label="YouTube"
+                ><i class="bx bxl-youtube"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Column 2 - Support -->
+          <div class="reveal stagger-2">
+            <h3
+              class="text-white font-semibold text-base mb-5"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Support
+            </h3>
+            <div class="flex flex-col gap-2.5 text-sm">
+              <a href="#">Contact Us</a>
+              <a href="#">About Page</a>
+              <a href="#">Size Guide</a>
+              <a href="#">Shipping & Returns</a>
+              <a href="#">Privacy Policy</a>
+              <a href="#">FAQ</a>
+            </div>
+          </div>
+
+          <!-- Column 3 - Shop -->
+          <div class="reveal stagger-3">
+            <h3
+              class="text-white font-semibold text-base mb-5"
+              style="font-family: 'Playfair Display', serif"
+            >
+              Collection
+            </h3>
+            <div class="flex flex-col gap-2.5 text-sm">
+              <a href="#">Men's Atelier</a>
+              <a href="#">Women's Atelier</a>
+              <a href="#">Children's Wear</a>
+              <a href="#">Accessories</a>
+              <a href="#">Sale & Archives</a>
+              <a href="#">Gift Cards</a>
+            </div>
+          </div>
+
+          <!-- Column 4 - Company -->
+          <div class="reveal stagger-4">
+            <h3
+              class="text-white font-semibold text-base mb-5"
+              style="font-family: 'Playfair Display', serif"
+            >
+              House of Kumo
+            </h3>
+            <div class="flex flex-col gap-2.5 text-sm">
+              <a href="#">Our Story</a>
+              <a href="#">Journal</a>
+              <a href="#">Careers</a>
+              <a href="#">Affiliate Programme</a>
+              <a href="#">Press</a>
+              <a href="#">Member Login</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>
+          © 2025 Kumo Atelier. All Rights Reserved. Crafted with
+          <i
+            class="bx bxs-heart"
+            style="color: var(--gold-muted); vertical-align: middle"
+          ></i>
+          by Hamas Munawar
+        </p>
+      </div>
     </footer>
 
+    <!-- ===== QUICK VIEW MODAL ===== -->
+    <div id="quickViewModal" class="quick-view-modal">
+      <div class="quick-view-content">
+        <div
+          class="flex justify-between items-center p-5"
+          style="border-bottom: 1px solid rgba(196, 162, 101, 0.12)"
+        >
+          <h3
+            class="font-bold text-lg"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Quick View
+          </h3>
+          <button
+            id="closeQuickView"
+            style="
+              background: none;
+              border: none;
+              font-size: 1.5rem;
+              cursor: pointer;
+              color: var(--text-muted);
+            "
+          >
+            <i class="bx bx-x"></i>
+          </button>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-6 p-5">
+          <div class="sm:w-1/2">
+            <img
+              id="qvImage"
+              src=""
+              alt=""
+              class="w-full"
+              style="border-radius: var(--radius-md); filter: sepia(4%)"
+            />
+          </div>
+          <div class="sm:w-1/2 flex flex-col justify-center gap-3">
+            <h2
+              id="qvName"
+              class="text-xl sm:text-2xl font-bold"
+              style="font-family: 'Playfair Display', serif"
+            ></h2>
+            <div class="star-rating">
+              <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+              ><i class="bx bxs-star-half"></i>
+              <span
+                class="text-sm ml-2"
+                style="
+                  color: var(--text-muted);
+                  font-family: 'Lora', serif;
+                "
+                >(4.5 / 128 reviews)</span
+              >
+            </div>
+            <p id="qvPrice" class="product-price text-2xl"></p>
+            <p
+              class="text-sm leading-relaxed"
+              style="
+                color: var(--text-secondary);
+                font-family: 'Cormorant Garamond', serif;
+                font-size: 1.02rem;
+              "
+            >
+              Premium quality fabric with heritage craftsmanship. Perfect for
+              both casual gatherings and distinguished occasions. Machine
+              washable and wrinkle-resistant.
+            </p>
+            <div class="flex items-center gap-3 mt-2">
+              <span
+                class="text-sm font-medium"
+                style="font-family: 'Lora', serif"
+                >Size:</span
+              >
+              <div class="flex gap-2">
+                <button
+                  class="px-3 py-1 text-sm transition-colors"
+                  style="
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                    border-radius: var(--radius-sm);
+                    background: transparent;
+                  "
+                >
+                  S
+                </button>
+                <button
+                  class="px-3 py-1 text-sm transition-colors"
+                  style="
+                    border: 1px solid var(--primary);
+                    border-radius: var(--radius-sm);
+                    background: var(--primary);
+                    color: var(--cream);
+                  "
+                >
+                  M
+                </button>
+                <button
+                  class="px-3 py-1 text-sm transition-colors"
+                  style="
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                    border-radius: var(--radius-sm);
+                    background: transparent;
+                  "
+                >
+                  L
+                </button>
+                <button
+                  class="px-3 py-1 text-sm transition-colors"
+                  style="
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                    border-radius: var(--radius-sm);
+                    background: transparent;
+                  "
+                >
+                  XL
+                </button>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 mt-2">
+              <span
+                class="text-sm font-medium"
+                style="font-family: 'Lora', serif"
+                >Qty:</span
+              >
+              <div class="qty-selector">
+                <button class="qty-minus">−</button>
+                <span class="qty-value">1</span>
+                <button class="qty-plus">+</button>
+              </div>
+            </div>
+            <button
+              id="qvAddToCartBtn"
+              class="hero-cta ripple mt-4 text-center"
+              style="width: 100%"
+            >
+              <i class="bx bx-cart-add mr-2"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- ===== CART DRAWER ===== -->
+    <div id="cartDrawerOverlay" class="cart-drawer-overlay"></div>
+    <div id="cartDrawer" class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3>Your Cart (<span id="cartItemCount">0</span>)</h3>
+        <button id="closeCartBtn" aria-label="Close cart">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
 
+      <div class="cart-drawer-body" id="cartItemsContainer">
+        <div class="empty-cart-msg">
+          <i
+            class="bx bx-shopping-bag"
+            style="font-size: 3rem; color: var(--text-muted); opacity: 0.5"
+          ></i>
+          <p>Your cart is empty.</p>
+          <button
+            class="hero-cta"
+            style="padding: 10px 20px !important; margin-top: 15px"
+            onclick="
+              document.getElementById('closeCartBtn').click();
+              window.location.href = '#products-section';
+            "
+          >
+            Start Shopping
+          </button>
+        </div>
+      </div>
+
+      <div class="cart-drawer-footer">
+        <div class="flex justify-between items-center mb-3 font-bold text-lg">
+          <span style="font-family: 'Lora', serif">Subtotal:</span>
+          <span
+            id="cartSubtotal"
+            style="color: var(--primary); font-family: 'Lora', serif"
+            >$0.00</span
+          >
+        </div>
+        <p
+          class="text-xs mb-3 text-center"
+          style="
+            color: var(--text-muted);
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+          "
+        >
+          Shipping, taxes, and discount codes calculated at checkout.
+        </p>
+        <button
+          id="checkoutBtn"
+          class="hero-cta w-full flex justify-center items-center py-3"
+          style="width: 100%"
+        >
+          Proceed to Checkout <i class="bx bx-lock-alt ml-2"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== WISHLIST DRAWER ===== -->
+    <div id="wishlistDrawer" class="cart-drawer">
+      <div class="cart-drawer-header">
+        <h3>Your Wishlist (<span id="wishlistCount">0</span>)</h3>
+        <button id="closeWishlistBtn" aria-label="Close wishlist">
+          <i class="bx bx-x"></i>
+        </button>
+      </div>
+
+      <div class="cart-drawer-body" id="wishlistItemsContainer">
+        <div class="empty-cart-msg">
+          <i
+            class="bx bx-heart"
+            style="font-size: 3rem; color: var(--text-muted); opacity: 0.5"
+          ></i>
+          <p>Your wishlist is empty.</p>
+          <button
+            class="hero-cta"
+            style="padding: 10px 20px !important; margin-top: 15px"
+            onclick="
+              document.getElementById('closeWishlistBtn').click();
+              window.location.href = '#products-section';
+            "
+          >
+            Discover Pieces
+          </button>
+        </div>
+      </div>
+
+      <div class="cart-drawer-footer" style="display: none" id="wishlistFooter">
+        <button
+          class="hero-cta w-full flex justify-center items-center py-3"
+          onclick="moveAllToCart()"
+          style="width: 100%"
+        >
+          Add All to Cart <i class="bx bx-cart-add ml-2"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ===== PROFILE/AUTH MODAL ===== -->
+    <div id="profileModal" class="video-modal">
+      <div
+        class="video-modal-content"
+        style="
+          max-width: 600px;
+          background: var(--cream);
+          border-radius: var(--radius-lg);
+          padding: 28px;
+          height: 80vh;
+          overflow-y: auto;
+          border: 1px solid rgba(196, 162, 101, 0.12);
+        "
+      >
+        <button
+          id="closeProfileBtn"
+          class="close-video"
+          style="
+            top: 10px;
+            right: 10px;
+            color: var(--text-secondary);
+            font-size: 2rem;
+          "
+        >
+          <i class="bx bx-x"></i>
+        </button>
+
+        <div id="authContent">
+          <h3
+            class="text-2xl font-bold mb-2"
+            style="font-family: 'Playfair Display', serif"
+          >
+            Welcome Back
+          </h3>
+          <p
+            class="text-sm mb-6"
+            style="
+              color: var(--text-muted);
+              font-family: 'Cormorant Garamond', serif;
+              font-size: 1.02rem;
+            "
+          >
+            Sign in to manage your orders, wishlist, and profile.
+          </p>
+
+          <form id="loginForm" class="flex flex-col gap-4">
+            <div>
+              <label
+                class="text-sm font-medium mb-1 block"
+                style="font-family: 'Lora', serif"
+                >Email</label
+              >
+              <input
+                type="email"
+                value="guest@kumo.com"
+                class="w-full px-3 py-2 text-sm outline-none transition-colors"
+                style="
+                  border: 1px solid rgba(196, 162, 101, 0.15);
+                  border-radius: var(--radius-sm);
+                  background: transparent;
+                  font-family: 'Cormorant Garamond', serif;
+                "
+                readonly
+              />
+            </div>
+            <div>
+              <label
+                class="text-sm font-medium mb-1 block"
+                style="font-family: 'Lora', serif"
+                >Password</label
+              >
+              <input
+                type="password"
+                value="password123"
+                class="w-full px-3 py-2 text-sm outline-none transition-colors"
+                style="
+                  border: 1px solid rgba(196, 162, 101, 0.15);
+                  border-radius: var(--radius-sm);
+                  background: transparent;
+                "
+                readonly
+              />
+            </div>
+            <button
+              type="button"
+              id="signInBtn"
+              class="hero-cta w-full py-3 mt-2 text-center flex justify-center tracking-wide"
+              style="width: 100%"
+            >
+              Sign In automatically
+            </button>
+          </form>
+        </div>
+
+        <div id="profileContent" class="hidden h-full flex flex-col">
+          <div
+            class="flex items-center gap-4 pb-5 mb-4"
+            style="border-bottom: 1px solid rgba(196, 162, 101, 0.12)"
+          >
+            <img
+              src="./image/team-1.jpg"
+              class="w-14 h-14 rounded-full object-cover shadow-md flex-shrink-0"
+              style="
+                filter: sepia(8%);
+                border: 2px solid rgba(196, 162, 101, 0.15);
+              "
+            />
+            <div>
+              <h3
+                class="text-xl font-bold"
+                style="font-family: 'Playfair Display', serif"
+                id="profileNameDisplay"
+              >
+                Guest User
+              </h3>
+              <p
+                class="text-sm"
+                style="
+                  color: var(--text-muted);
+                  font-family: 'Lora', serif;
+                "
+                id="profileEmailDisplay"
+              >
+                guest@kumo.com
+              </p>
+            </div>
+          </div>
+
+          <!-- Profile Tabs Nav -->
+          <div
+            class="flex mb-4"
+            style="border-bottom: 1px solid rgba(196, 162, 101, 0.12)"
+          >
+            <button
+              class="profile-tab-btn active px-4 py-2 font-medium border-b-2 border-[var(--primary)] text-[var(--primary)]"
+              data-tab="ordersTab"
+              style="font-family: 'Lora', serif"
+            >
+              Orders
+            </button>
+            <button
+              class="profile-tab-btn px-4 py-2 font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-800"
+              data-tab="settingsTab"
+              style="font-family: 'Lora', serif"
+            >
+              Settings
+            </button>
+            <button
+              class="px-4 py-2 font-medium border-b-2 border-transparent text-gray-500 hover:text-[var(--primary)] flex items-center gap-1"
+              onclick="
+                document.getElementById('closeProfileBtn').click();
+                setTimeout(
+                  () => document.getElementById('wishlistDrawerBtn').click(),
+                  300
+                );
+              "
+              style="font-family: 'Lora', serif"
+            >
+              <i class="bx bx-heart"></i> Wishlist
+            </button>
+          </div>
+
+          <!-- Orders Tab Content -->
+          <div
+            id="ordersTab"
+            class="profile-tab-content flex-1 overflow-y-auto"
+          >
+            <div class="flex flex-col gap-4">
+              <!-- Mock Order -->
+              <div
+                class="p-4"
+                style="
+                  border: 1px solid rgba(196, 162, 101, 0.12);
+                  border-radius: var(--radius-sm);
+                  background: var(--parchment);
+                "
+              >
+                <div
+                  class="flex justify-between items-center mb-2 pb-2"
+                  style="border-bottom: 1px solid rgba(196, 162, 101, 0.08)"
+                >
+                  <span
+                    class="font-bold text-sm tracking-widest uppercase"
+                    style="font-family: 'Lora', serif"
+                    >Order #KUMO-8429</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded text-xs font-bold"
+                    style="
+                      color: var(--success);
+                      background: rgba(91, 138, 93, 0.1);
+                      font-family: 'Lora', serif;
+                    "
+                    >Processing</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <img
+                    src="./image/1.jpg"
+                    class="w-12 h-12 rounded object-cover"
+                    style="filter: sepia(4%)"
+                  />
+                  <div class="text-sm">
+                    <p
+                      class="font-semibold"
+                      style="font-family: 'Lora', serif"
+                    >
+                      Half Running Set
+                    </p>
+                    <p style="color: var(--text-muted)">Qty: 1 | $99.00</p>
+                  </div>
+                </div>
+              </div>
+              <!-- Mock Order 2 -->
+              <div
+                class="p-4"
+                style="
+                  border: 1px solid rgba(196, 162, 101, 0.12);
+                  border-radius: var(--radius-sm);
+                  background: var(--parchment);
+                "
+              >
+                <div
+                  class="flex justify-between items-center mb-2 pb-2"
+                  style="border-bottom: 1px solid rgba(196, 162, 101, 0.08)"
+                >
+                  <span
+                    class="font-bold text-sm tracking-widest uppercase"
+                    style="font-family: 'Lora', serif"
+                    >Order #KUMO-7711</span
+                  >
+                  <span
+                    class="px-2 py-1 rounded text-xs font-bold"
+                    style="
+                      color: var(--text-muted);
+                      background: rgba(155, 139, 125, 0.1);
+                      font-family: 'Lora', serif;
+                    "
+                    >Delivered</span
+                  >
+                </div>
+                <div class="flex items-center gap-3">
+                  <img
+                    src="./image/4.jpg"
+                    class="w-12 h-12 rounded object-cover"
+                    style="filter: sepia(4%)"
+                  />
+                  <div class="text-sm">
+                    <p
+                      class="font-semibold"
+                      style="font-family: 'Lora', serif"
+                    >
+                      Summer Collection Top
+                    </p>
+                    <p style="color: var(--text-muted)">Qty: 2 | $150.00</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Settings Tab Content -->
+          <div id="settingsTab" class="profile-tab-content hidden flex-1">
+            <form id="profileSettingsForm" class="flex flex-col gap-4">
+              <div>
+                <label
+                  class="text-sm font-medium mb-1 block"
+                  style="font-family: 'Lora', serif"
+                  >Full Name</label
+                >
+                <input
+                  type="text"
+                  id="editProfileName"
+                  value="Guest User"
+                  class="w-full px-3 py-2 text-sm outline-none transition-colors bg-transparent"
+                  style="
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                    border-radius: var(--radius-sm);
+                  "
+                />
+              </div>
+              <div>
+                <label
+                  class="text-sm font-medium mb-1 block"
+                  style="font-family: 'Lora', serif"
+                  >Email Address</label
+                >
+                <input
+                  type="email"
+                  id="editProfileEmail"
+                  value="guest@kumo.com"
+                  class="w-full px-3 py-2 text-sm outline-none transition-colors bg-transparent"
+                  style="
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                    border-radius: var(--radius-sm);
+                  "
+                />
+              </div>
+              <div>
+                <label
+                  class="text-sm font-medium mb-1 block"
+                  style="font-family: 'Lora', serif"
+                  >Shipping Address</label
+                >
+                <textarea
+                  class="w-full px-3 py-2 text-sm outline-none transition-colors bg-transparent"
+                  rows="3"
+                  style="
+                    border: 1px solid rgba(196, 162, 101, 0.15);
+                    border-radius: var(--radius-sm);
+                  "
+                >
+123 Fashion Ave, NY 10001, USA</textarea
+                >
+              </div>
+              <button
+                type="button"
+                id="saveProfileBtn"
+                class="hero-cta py-2 mt-2"
+                style="width: 100%"
+              >
+                Save Changes
+              </button>
+            </form>
+          </div>
+
+          <div class="pt-4 mt-auto">
+            <button
+              id="signOutBtn"
+              class="w-full py-3 rounded-md transition-colors font-medium"
+              style="
+                border: 1px solid var(--primary);
+                color: var(--primary);
+                background: transparent;
+                font-family: 'Lora', serif;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                font-size: 0.78rem;
+                border-radius: var(--radius-sm);
+                cursor: pointer;
+              "
+            >
+              Sign Out
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CHECKOUT MODAL ===== -->
+    <div id="checkoutModal" class="video-modal">
+      <div
+        class="video-modal-content"
+        style="
+          max-width: 600px;
+          background: var(--cream);
+          border-radius: var(--radius-lg);
+          padding: 28px;
+          text-align: center;
+          border: 1px solid rgba(196, 162, 101, 0.12);
+        "
+      >
+        <button
+          id="closeCheckoutBtn"
+          class="close-video"
+          style="top: -40px; right: 0"
+        >
+          <i class="bx bx-x"></i>
+        </button>
+
+        <div id="checkoutProcess">
+          <div
+            class="inline-flex justify-center items-center w-16 h-16 rounded-full mb-4 animate-bounce"
+            style="background: rgba(139, 34, 82, 0.08)"
+          >
+            <i class="bx bx-package text-3xl" style="color: var(--primary)"></i>
+          </div>
+          <h3
+            class="text-2xl font-bold mb-2"
+            style="
+              font-family: 'Playfair Display', serif;
+              color: var(--text-primary);
+            "
+          >
+            Processing Your Order
+          </h3>
+          <p
+            class="text-sm mb-6"
+            style="
+              color: var(--text-muted);
+              font-family: 'Cormorant Garamond', serif;
+            "
+          >
+            We are preparing your transaction...
+          </p>
+          <div
+            class="w-full rounded-full h-2 mb-4 overflow-hidden"
+            style="background: var(--light-secondary)"
+          >
+            <div
+              id="checkoutProgress"
+              class="h-2 rounded-full"
+              style="
+                width: 0%;
+                transition: width 3s linear;
+                background: var(--primary);
+              "
+            ></div>
+          </div>
+        </div>
+
+        <div id="checkoutSuccess" class="hidden">
+          <div
+            class="inline-flex justify-center items-center w-20 h-20 rounded-full mb-4"
+            style="
+              background: rgba(91, 138, 93, 0.1);
+              animation: dropIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+                forwards;
+            "
+          >
+            <i class="bx bx-check text-5xl" style="color: var(--success)"></i>
+          </div>
+          <h3
+            class="text-2xl font-bold mb-2"
+            style="
+              font-family: 'Playfair Display', serif;
+              color: var(--text-primary);
+            "
+          >
+            Order Confirmed!
+          </h3>
+          <p
+            class="text-sm mb-2"
+            style="
+              color: var(--text-muted);
+              font-family: 'Cormorant Garamond', serif;
+            "
+          >
+            Thank you for your purchase. Your order
+            <span class="font-bold" style="color: var(--text-primary)"
+              >#KUMO-8429</span
+            >
+            is confirmed.
+          </p>
+          <p
+            class="text-sm mb-8"
+            style="
+              color: var(--text-muted);
+              font-family: 'Cormorant Garamond', serif;
+            "
+          >
+            You will receive an email confirmation shortly.
+          </p>
+          <button
+            class="hero-cta w-full flex justify-center items-center py-3 tracking-wide"
+            style="width: 100%"
+            onclick="closeCheckoutForce()"
+          >
+            Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== VIDEO MODAL ===== -->
+    <div id="videoModal" class="video-modal">
+      <div class="video-modal-content">
+        <button id="closeVideoBtn" class="close-video">
+          <i class="bx bx-x"></i>
+        </button>
+        <div
+          class="video-container"
+          style="
+            padding-top: 56.25%;
+            position: relative;
+            background: var(--dark);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+          "
+        >
+          <div
+            style="
+              position: absolute;
+              inset: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              color: var(--cream);
+            "
+          >
+            <i
+              class="bx bx-video"
+              style="
+                font-size: 4rem;
+                margin-bottom: 20px;
+                color: var(--gold-muted);
+              "
+            ></i>
+            <h3 style="font-family: 'Playfair Display', serif">
+              Our Heritage Story
+            </h3>
+            <p
+              style="
+                color: rgba(255, 255, 255, 0.3);
+                margin-top: 10px;
+                font-family: 'Cormorant Garamond', serif;
+                font-style: italic;
+              "
+            >
+              (Imagine a beautiful cinematic film playing here)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== TOAST NOTIFICATION ===== -->
+    <div id="toast" class="toast">
+      <i class="bx bx-check-circle toast-icon"></i>
+      <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to top">
+      <i class="bx bx-chevron-up"></i>
+    </button>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
